@@ -62,7 +62,7 @@ time.sleep(2)
 submit = driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
 #the number of pages to cycle through
-n_pages = 10
+n_pages = 8
 
 #looping through page numbers, by adding the the range as a str at the end of the URL for page=n 
 for n in range(1,n_pages):
@@ -75,7 +75,7 @@ for n in range(1,n_pages):
     time.sleep(2)
 
     #find the connect button
-    all_buttons = driver.find_element (By.tagname ("button"))
+    all_buttons = driver.find_elements_by_tag_name("button")
     connect_buttons = [btn for btn in all_buttons if btn.text == "Connect"]
 
     #loop through all connect buttons
@@ -90,7 +90,7 @@ for n in range(1,n_pages):
         
         #if the contact has secrurity settings enabled, 
         #limiting adding to people they know, close the window and skip
-        close_btn = driver.find_element (By.XPATH, "//button[@aria-label = 'Dissmiss']")
+        close_btn = driver.find_element (By.XPATH, "//button[@aria-label = 'Dismiss']")
         driver.execute_script("arguments[0].click();", close_btn)
 
         time.sleep(2)
